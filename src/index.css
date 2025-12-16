@@ -10,7 +10,8 @@
   }
 
   body {
-    @apply bg-ios-bg text-black antialiased overflow-hidden select-none;
+    background-color: var(--ios-bg-primary);
+    @apply text-black antialiased overflow-hidden select-none;
     /* Prevent rubber-banding */
     overscroll-behavior-y: none;
     -webkit-tap-highlight-color: transparent;

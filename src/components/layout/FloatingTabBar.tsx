@@ -37,14 +37,14 @@ const FloatingTabBar = () => {
                             {activeTab === tab.id && (
                                 <motion.div
                                     layoutId="active-tab"
-                                    className="absolute inset-0 bg-white/10 rounded-[1.5rem]"
+                                    className="absolute inset-0 bg-white shadow-md shadow-black/5 rounded-[1.5rem]"
                                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                 />
                             )}
                             <tab.icon
                                 className={cn(
                                     "w-6 h-6 relative z-10 transition-colors duration-300",
-                                    activeTab === tab.id ? "text-white" : "text-white/40"
+                                    activeTab === tab.id ? "text-black" : "text-gray-400"
                                 )}
                                 strokeWidth={activeTab === tab.id ? 2.5 : 2}
                             />

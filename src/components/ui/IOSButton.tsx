@@ -10,9 +10,9 @@ interface IOSButtonProps extends HTMLMotionProps<"button"> {
 
 const IOSButton = ({ children, className, variant = 'primary', size = 'md', ...props }: IOSButtonProps) => {
     const variants = {
-        primary: 'bg-white text-black font-semibold shadow-lg shadow-white/10',
-        secondary: 'bg-white/10 text-white backdrop-blur-md border border-white/10',
-        glass: 'bg-transparent text-white border border-white/20 hover:bg-white/5',
+        primary: 'bg-black text-white font-semibold shadow-lg shadow-black/20 hover:bg-gray-900',
+        secondary: 'bg-white text-black font-semibold shadow-md shadow-black/5 border border-black/5 hover:bg-gray-50',
+        glass: 'bg-white/40 text-black border border-white/40 hover:bg-white/60 backdrop-blur-md',
     };
 
     const sizes = {

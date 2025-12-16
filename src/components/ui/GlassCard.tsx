@@ -10,9 +10,9 @@ interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const GlassCard = ({ children, className, intensity = 'medium', ...props }: GlassCardProps) => {
     const blurMap = {
-        low: 'backdrop-blur-[20px] bg-white/5 border-white/5',
-        medium: 'backdrop-blur-[40px] bg-white/10 border-white/10',
-        high: 'backdrop-blur-[60px] bg-white/15 border-white/20',
+        low: 'backdrop-blur-[20px] bg-white/40 border-white/20 shadow-sm',
+        medium: 'backdrop-blur-[40px] bg-white/60 border-white/40 shadow-lg shadow-black/5',
+        high: 'backdrop-blur-[60px] bg-white/80 border-white/60 shadow-xl shadow-black/5',
     };
 
     return (
@@ -21,7 +21,7 @@ const GlassCard = ({ children, className, intensity = 'medium', ...props }: Glas
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
             className={cn(
-                "relative rounded-[2rem] shadow-2xl border",
+                "relative rounded-[2rem] border",
                 blurMap[intensity],
                 "overflow-hidden",
                 className
@@ -29,7 +29,7 @@ const GlassCard = ({ children, className, intensity = 'medium', ...props }: Glas
             {...props as any}
         >
             {/* Glossy reflection effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-50 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent opacity-50 pointer-events-none" />
 
             {/* Content */}
             <div className="relative z-10">

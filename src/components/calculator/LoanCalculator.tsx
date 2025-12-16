@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import GlassCard from '../ui/GlassCard';
-import { Slider } from '../ui/Slider'; // We might need to create a Slider component
 import { cn } from '../../lib/utils';
+// Slider import removed as not used yet
 
 // Helper to format currency
 const formatCurrency = (val: number) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(val);
@@ -48,7 +47,7 @@ export const LoanCalculator = () => {
             <div className="grid gap-6">
                 <InputGroup label="Vehicle Price" value={price} setValue={setPrice} min={5000} max={200000} step={500} format={formatCurrency} />
                 <InputGroup label="Down Payment" value={downPayment} setValue={setDownPayment} min={0} max={price} step={100} format={formatCurrency} />
-                <InputGroup label="Interest Rate" value={rate} setValue={setRate} min={0} max={20} step={0.1} format={(v) => `${v.toFixed(1)}%`} />
+                <InputGroup label="Interest Rate" value={rate} setValue={setRate} min={0} max={20} step={0.1} format={(v: number) => `${v.toFixed(1)}%`} />
 
                 {/* Term Selection */}
                 <div className="space-y-3">
@@ -75,7 +74,18 @@ export const LoanCalculator = () => {
     );
 }
 
-const InputGroup = ({ label, value, setValue, min, max, step, format }: any) => {
+// Fixed 'any' type to specific types
+interface InputGroupProps {
+    label: string;
+    value: number;
+    setValue: (val: number) => void;
+    min: number;
+    max: number;
+    step: number;
+    format: (val: number) => string;
+}
+
+const InputGroup = ({ label, value, setValue, min, max, step }: InputGroupProps) => {
     return (
         <GlassCard className="p-5 !bg-white/50 !rounded-[1.5rem] space-y-4">
             <div className="flex justify-between items-center">

@@ -3,9 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import FloatingTabBar from './components/layout/FloatingTabBar';
 import IOSButton from './components/ui/IOSButton';
 import { LoanCalculator } from './components/calculator/LoanCalculator';
+import { Dashboard } from './components/dashboard/Dashboard';
 
 function App() {
-  const [activeTab, setActiveTab] = useState('calculator');
+  const [activeTab, setActiveTab] = useState('home');
 
   return (
     <main className="min-h-screen w-full relative pt-safe-top pb-[140px]"> {/* Bottom padding for tab bar */}
@@ -40,15 +41,7 @@ function App() {
             transition={{ duration: 0.2 }}
           >
             {activeTab === 'calculator' && <LoanCalculator />}
-            {activeTab === 'home' && (
-              <div className="flex flex-col items-center justify-center p-10 text-center space-y-4">
-                <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center">
-                  <span className="text-4xl">🏠</span>
-                </div>
-                <h2 className="text-xl font-semibold text-black">Dashboard</h2>
-                <p className="text-gray-500">Your saved loans and featured offers will appear here.</p>
-              </div>
-            )}
+            {activeTab === 'home' && <Dashboard />}
             {activeTab === 'garage' && (
               <div className="flex flex-col items-center justify-center p-10 text-center space-y-4">
                 <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center">

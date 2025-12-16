@@ -12,10 +12,18 @@
   body {
     background-color: var(--ios-bg-primary);
     @apply text-black antialiased overflow-hidden select-none;
-    /* Prevent rubber-banding */
-    overscroll-behavior-y: none;
+
+    /* PWA Strict Native Feel */
     -webkit-tap-highlight-color: transparent;
-    font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", sans-serif;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+  }
+
+  /* Hide Scrollbars */
+  ::-webkit-scrollbar {
+    display: none;
   }
 
   #root {

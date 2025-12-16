@@ -16,9 +16,12 @@ const tabs: TabItem[] = [
     { id: 'settings', icon: Settings, label: 'Settings' },
 ];
 
-const FloatingTabBar = () => {
-    const [activeTab, setActiveTab] = React.useState('calculator');
+interface FloatingTabBarProps {
+    currentTab: string;
+    onTabChange: (id: string) => void;
+}
 
+const FloatingTabBar = ({ currentTab, onTabChange }: FloatingTabBarProps) => {
     return (
         <div className="fixed bottom-0 left-0 right-0 z-50 flex justify-center pb-safe-bottom pointer-events-none">
             <motion.div
@@ -31,10 +34,10 @@ const FloatingTabBar = () => {
                     {tabs.map((tab) => (
                         <button
                             key={tab.id}
-                            onClick={() => setActiveTab(tab.id)}
+                            onClick={() => onTabChange(tab.id)}
                             className="relative px-6 py-4 rounded-[1.5rem] flex flex-col items-center justify-center transition-colors"
                         >
-                            {activeTab === tab.id && (
+                            {currentTab === tab.id && (
                                 <motion.div
                                     layoutId="active-tab"
                                     className="absolute inset-0 bg-white shadow-md shadow-black/5 rounded-[1.5rem]"
@@ -44,9 +47,9 @@ const FloatingTabBar = () => {
                             <tab.icon
                                 className={cn(
                                     "w-6 h-6 relative z-10 transition-colors duration-300",
-                                    activeTab === tab.id ? "text-black" : "text-gray-400"
+                                    currentTab === tab.id ? "text-black" : "text-gray-400"
                                 )}
-                                strokeWidth={activeTab === tab.id ? 2.5 : 2}
+                                strokeWidth={currentTab === tab.id ? 2.5 : 2}
                             />
                         </button>
                     ))}
